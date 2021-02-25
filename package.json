@@ -1,0 +1,22 @@
+{
+  "name": "my-blog",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "liaoyf <liaoy@sunsharing.com.cn>",
+  "license": "MIT",
+  "scripts": {
+    "start": "npm run start:client && npm run start:server",
+    "start:client": "webpack serve --config=scripts/webpack.server.js",
+    "start:server": "cargo run --manifest-path=server/Cargo.toml",
+    "build": "cargo build",
+    "build:client": "wasm-pack build client --target web --out-name wasm --out-dir ../static/build",
+    "build:server": "cargo build --manifest-path=server/Cargo.toml"
+  },
+  "devDependencies": {
+    "@wasm-tool/wasm-pack-plugin": "^1.3.3",
+    "html-webpack-plugin": "^5.2.0",
+    "webpack": "^5.24.1",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
