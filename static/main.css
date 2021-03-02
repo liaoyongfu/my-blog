@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    font-size: 14px;
+    font-family: "Microsoft YaHei UI", Arial, Arvo;
+    width: 100%;
+    height: 100%;
+}
+nav {
+    background: #155580;
+}
+nav ul {
+    display: flex;
+    color: #fff;
+    list-style: none;
+    padding: 16px;
+}
+nav li {
+    margin-right: 32px;
+}
+nav a {
+    color: #fff;
+    font-size: 18px;
+    text-decoration: none;
+}

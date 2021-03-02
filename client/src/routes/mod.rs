@@ -6,7 +6,7 @@ use crate::views::{
     info::Info,
 };
 
-#[derive(Switch, Debug, Clone)]
+#[derive(Switch, Debug, Clone, PartialEq, Copy)]
 pub enum AppRoute {
     #[to = "/info"]
     Info,

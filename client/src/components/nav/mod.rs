@@ -16,8 +16,16 @@ use yew_router::{
 
 use crate::routes::AppRoute;
 
+#[derive(Debug, Clone, PartialEq)]
+pub struct MenuItem {
+    pub(crate) name: &'static str,
+    pub(crate) url: &'static str,
+    pub(crate) router: AppRoute
+}
+
 #[derive(Properties, Clone, PartialEq, Debug)]
 pub struct RouterNavProps {
+    pub menu: Vec<MenuItem>
 }
 
 pub struct RouterNav {
@@ -73,12 +81,15 @@ impl Component for RouterNav {
         html! {
             <nav role="navigation">
                 <ul role="menubar">
-                    <li role="menuitem" class=self.active_classname("/")>
-                        <RouteLink route=AppRoute::Index>{ "Home" }</RouteLink>
-                    </li>
-                    <li role="menuitem" class=self.active_classname("/info")>
-                        <RouteLink route=AppRoute::Info>{ "Info" }</RouteLink>
-                    </li>
+                    {
+                        self.props.menu.iter().map(|item| {
+                            html! {
+                                <li role="menuitem" class=self.active_classname(item.url)>
+                                    <RouteLink route=item.router>{ item.name }</RouteLink>
+                                </li>
+                             }
+                        }).collect::<Html>()
+                    }
                 </ul>
             </nav>
         }

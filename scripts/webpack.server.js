@@ -14,7 +14,11 @@ module.exports = {
             {
                 test: /\.wasm$/,
                 type: 'webassembly/async'
-            }
+            },
+            {
+                test: /\.css$/i,
+                use: ['style-loader', 'css-loader'],
+            },
         ]
     },
     plugins: [

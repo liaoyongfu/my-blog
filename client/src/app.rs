@@ -6,8 +6,8 @@ use yew::prelude::{
     ShouldRender,
 };
 
-use crate::routes::router;
-use crate::components::nav::RouterNav;
+use crate::routes::{router, AppRoute};
+use crate::components::nav::{RouterNav, MenuItem};
 
 pub struct App {
 }
@@ -30,10 +30,21 @@ impl Component for App {
     }
 
     fn view(&self) -> Html {
+        let menu: Vec<MenuItem> = vec![
+            MenuItem {
+                name: "Home",
+                url: "/",
+                router: AppRoute::Index
+            },
+            MenuItem {
+                name: "Info",
+                url: "/info",
+                router: AppRoute::Info
+            }
+        ];
         html! {
             <main id="app">
-                <img src="/assets/yew-logo.svg" class="yew-logo" />
-                <RouterNav />
+                <RouterNav menu=menu />
                 { router() }
             </main>
         }
