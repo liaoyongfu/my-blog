@@ -6,7 +6,7 @@ module.exports = {
     entry: './static/main.js',
     mode: "production",
     output: {
-        publicPath: "/",
+        publicPath: "",
         filename: "[name].js"
     },
     module: {

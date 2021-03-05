@@ -8,6 +8,7 @@
     "start": "npm run start:client && npm run start:server",
     "start:client": "webpack serve --port=8888 --open --config=scripts/webpack.server.js",
     "start:server": "cargo run --manifest-path=server/Cargo.toml",
+    "prebuild": "rimraf dist",
     "build": "npm run build:client && npm run build:server",
     "build:client": "webpack --config=scripts/webpack.prod.js",
     "build:server": "cargo build --manifest-path=server/Cargo.toml",
