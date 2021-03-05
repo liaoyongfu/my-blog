@@ -6,6 +6,8 @@ use yew::{
     Html,
     html,
 };
+use crate::components::list::List;
+use crate::components::list::ListItem;
 
 #[derive(Properties, Debug, Clone, PartialEq)]
 pub struct IndexProps {}
@@ -38,10 +40,25 @@ impl Component for Index {
     }
 
     fn view(&self) -> Html {
+        let data: Vec<ListItem> = vec![
+            ListItem {
+                title: "文章标题",
+                date: "2021-3-2 17:00:17",
+                url: "/article/1",
+                brief: "这个是文章的简介这个是文章的简介这个是文章的简介这个是文章的简介这个是文章的简介这个是文章的简介这个是文章的简介这个是文章的简介..."
+            },
+            ListItem {
+                title: "文章标题",
+                date: "2021-3-2 17:00:17",
+                url: "/article/2",
+                brief: "这个是文章的简介这个是文章的简介这个是文章的简介这个是文章的简介这个是文章的简介这个是文章的简介这个是文章的简介这个是文章的简介..."
+            }
+        ];
         html! {
             <div id="index-view" style="width:100%;">
-                <h1>{ "Rust | Yew | Actix" }</h1>
-                <p>{ "Basic boilerplate setup for Rust and Yew" }</p>
+                <div class="main-content">
+                    <List data=data />
+                </div>
             </div>
         }
     }

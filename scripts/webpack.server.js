@@ -4,6 +4,9 @@ const path = require("path");
 
 module.exports = {
     entry: './static/main.js',
+    output: {
+        publicPath: "/"
+    },
     mode: "development",
     devServer: {
         contentBase: './static',

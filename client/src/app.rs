@@ -32,12 +32,12 @@ impl Component for App {
     fn view(&self) -> Html {
         let menu: Vec<MenuItem> = vec![
             MenuItem {
-                name: "Home",
+                name: "首页",
                 url: "/",
                 router: AppRoute::Index
             },
             MenuItem {
-                name: "Info",
+                name: "关于",
                 url: "/info",
                 router: AppRoute::Info
             }
