@@ -1,5 +1,6 @@
-use yew_router::components::Props;
+use yew_router::components::{Props, RouterAnchor};
 use yew::{Component, ComponentLink, Html, Properties, html};
+use crate::routes::AppRoute;
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct ListItem {
@@ -9,8 +10,8 @@ pub struct ListItem {
     pub(crate) date: &'static str,
     // 简介
     pub(crate) brief: &'static str,
-    // 文章地址
-    pub(crate) url: &'static str
+    // 路由地址
+    pub(crate) router: AppRoute
 }
 
 #[derive(Properties, Clone, PartialEq, Debug)]
@@ -23,6 +24,8 @@ pub struct List {
     pub props: ListProps,
     pub link: ComponentLink<Self>
 }
+
+type RouteLink = RouterAnchor<AppRoute>;
 
 impl Component for List {
     type Message = ();
@@ -46,7 +49,7 @@ impl Component for List {
                 {self.props.data.iter().map(|item| {
                     html! {
                         <div class="list-item">
-                            <a href=item.url class="list-item-title">{item.title}</a>
+                            <RouteLink route=item.router classes="list-item-title">{item.title}</RouteLink>
                             <div class="list-item-date">{item.date}</div>
                             <div class="list-item-brief">{item.brief}</div>
                         </div>

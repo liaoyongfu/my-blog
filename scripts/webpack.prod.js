@@ -6,7 +6,8 @@ module.exports = {
     entry: './static/main.js',
     mode: "production",
     output: {
-        publicPath: "/my-blog"
+        publicPath: "/",
+        filename: "[name].js"
     },
     module: {
         rules: [

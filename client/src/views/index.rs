@@ -8,6 +8,7 @@ use yew::{
 };
 use crate::components::list::List;
 use crate::components::list::ListItem;
+use crate::routes::AppRoute;
 
 #[derive(Properties, Debug, Clone, PartialEq)]
 pub struct IndexProps {}
@@ -44,18 +45,18 @@ impl Component for Index {
             ListItem {
                 title: "文章标题",
                 date: "2021-3-2 17:00:17",
-                url: "/article/1",
-                brief: "这个是文章的简介这个是文章的简介这个是文章的简介这个是文章的简介这个是文章的简介这个是文章的简介这个是文章的简介这个是文章的简介..."
+                brief: "这个是文章的简介这个是文章的简介这个是文章的简介这个是文章的简介这个是文章的简介这个是文章的简介这个是文章的简介这个是文章的简介...",
+                router: AppRoute::Article(1)
             },
             ListItem {
                 title: "文章标题",
                 date: "2021-3-2 17:00:17",
-                url: "/article/2",
-                brief: "这个是文章的简介这个是文章的简介这个是文章的简介这个是文章的简介这个是文章的简介这个是文章的简介这个是文章的简介这个是文章的简介..."
+                brief: "这个是文章的简介这个是文章的简介这个是文章的简介这个是文章的简介这个是文章的简介这个是文章的简介这个是文章的简介这个是文章的简介...",
+                router: AppRoute::Article(2)
             }
         ];
         html! {
-            <div id="index-view" style="width:100%;">
+            <div id="index-view" style="width:100%">
                 <div class="main-content">
                     <List data=data />
                 </div>
