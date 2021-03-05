@@ -16,6 +16,20 @@ Actix-web + Yew
 2. client 端提供前端页面/路由，打包后生成 wasm（pkg 目录）
 3. static 端静态文件，由 webpack 引入 wasm 文件，并提供 hot reload 功能
 
-## 问题
+## 启动
 
-- 目前编译出来，wasm 文件 2M 多
+````
+yarn start
+````
+
+## 编译
+
+````
+yarn build
+````
+
+## 部署 gh-pages
+
+````
+yarn deploy
+````

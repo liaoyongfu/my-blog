@@ -5,6 +5,9 @@ const path = require("path");
 module.exports = {
     entry: './static/main.js',
     mode: "production",
+    output: {
+        publicPath: ""
+    },
     module: {
         rules: [
             {
