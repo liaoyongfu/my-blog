@@ -5,10 +5,17 @@ use yew::{
     ShouldRender,
     Html,
     html,
+    format::Nothing,
+    prelude::*
 };
 use crate::components::list::List;
 use crate::components::list::ListItem;
 use crate::routes::AppRoute;
+use yew::services::{FetchService, ConsoleService};
+use http::{Request,Response};
+use yew::format::Json;
+use http::Error;
+use serde::Deserialize;
 
 #[derive(Properties, Debug, Clone, PartialEq)]
 pub struct IndexProps {}
@@ -21,14 +28,36 @@ pub struct Index {
     link: ComponentLink<Self>,
 }
 
+#[derive(Deserialize)]
+struct Data {
+    code: u32
+}
+
 impl Component for Index {
-    type Message = Msg;
+    type Message = ();
     type Properties = IndexProps;
 
     fn create(props: Self::Properties, link: ComponentLink<Self>) -> Self {
         Self {
             props,
             link,
+        }
+    }
+
+    fn rendered(&mut self, _first_render: bool) {
+        // TODO fetch canceld, why ?
+        if _first_render {
+            FetchService::fetch(
+                Request::get("http://127.0.0.1:9999/getArticles")
+                    .header("Content-Type", "application/json")
+                    .body(Nothing)
+                    .unwrap()
+                ,
+                self.link.callback(|res: Response<Result<String, _>>| {
+                    ConsoleService::log("Success: ");
+                    ConsoleService::log(res.status().as_str());
+                })
+            );
         }
     }
 

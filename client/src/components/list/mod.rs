@@ -1,5 +1,5 @@
 use yew_router::components::{Props, RouterAnchor};
-use yew::{Component, ComponentLink, Html, Properties, html};
+use yew::{Component, ComponentLink, Html, Properties, html, ShouldRender};
 use crate::routes::AppRoute;
 
 #[derive(Debug, Clone, PartialEq)]
@@ -35,12 +35,12 @@ impl Component for List {
         List { props, link }
     }
 
-    fn update(&mut self, msg: Self::Message) -> bool {
-        unimplemented!()
+    fn update(&mut self, msg: Self::Message) -> ShouldRender {
+        true
     }
 
-    fn change(&mut self, _props: Self::Properties) -> bool {
-        unimplemented!()
+    fn change(&mut self, _props: Self::Properties) -> ShouldRender {
+        true
     }
 
     fn view(&self) -> Html {

@@ -1,22 +1,29 @@
 mod router;
+mod config;
 
-use actix_web::{HttpServer, App};
+use actix_web::{HttpServer, App, web, HttpResponse, http};
 use std::io::Result;
-use crate::router::{AppStateWithCounter, index};
 use actix_web::web::{Data, get};
 use std::sync::Mutex;
+use crate::router::get_articles;
+use actix_cors::Cors;
 
 #[actix_web::main]
 async fn main() -> Result<()> {
-    let counter = Data::new(AppStateWithCounter {
-        counter: Mutex::new(0)
-    });
-    HttpServer::new(move || {
+    HttpServer::new(|| {
+        let cors = Cors::default()
+            // TODO 如何设置 *
+            .allowed_origin("http://localhost:8888")
+            // .allowed_methods(vec!["GET", "POST"])
+            // .allowed_headers(vec![http::header::AUTHORIZATION, http::header::ACCEPT])
+            // .allowed_header(http::header::CONTENT_TYPE)
+            .max_age(3600);
+
         App::new()
-            .app_data(counter.clone())
-            .route("/", get().to(index))
+            .wrap(cors)
+            .service(get_articles)
     })
-        .bind("127.0.0.1:8080")?
+        .bind("127.0.0.1:9999")?
         .run()
         .await
 }
