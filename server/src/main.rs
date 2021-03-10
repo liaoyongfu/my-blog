@@ -14,6 +14,8 @@ async fn main() -> Result<()> {
         let cors = Cors::default()
             // TODO 如何设置 *
             .allowed_origin("http://localhost:8888")
+            .supports_credentials()
+            .send_wildcard()
             // .allowed_methods(vec!["GET", "POST"])
             // .allowed_headers(vec![http::header::AUTHORIZATION, http::header::ACCEPT])
             // .allowed_header(http::header::CONTENT_TYPE)
